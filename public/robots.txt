@@ -3,7 +3,7 @@ User-agent: *
 Allow: /
 
 # Sitemap location
-Sitemap: https://agasthiyamahasivanaadijothidam.com/sitemap.xml
+Sitemap: https://naadiastroservice.com/sitemap.xml
 
 # Crawl delay (optional - helps reduce server load)
 Crawl-delay: 1
