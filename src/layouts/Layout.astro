@@ -2,20 +2,86 @@
 interface Props {
   title: string;
   description?: string;
+  keywords?: string;
+  image?: string;
 }
 
-const { title, description = "Sree Agasthiya Maha Siva Nadi Astrology - Expert Nadi Astrology Services in Vaitheeswaran Koil and Trichy" } = Astro.props;
+const { 
+  title, 
+  description = "Sree Agasthiya Maha Siva Nadi Astrology - Expert Nadi Astrology Services in Vaitheeswaran Koil and Trichy. Accurate predictions by Guruji M.A. Thillaimani with 15+ years experience.",
+  keywords = "nadi astrology, siva nadi, vaitheeswaran koil, nadi jothidam, palm leaf astrology, agasthiya nadi, thillaimani, tamil astrology, nadi predictions, accurate astrology",
+  image = "/assets/images/nadi/logo4.png"
+} = Astro.props;
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site || "https://agasthiyamahasivanaadijothidam.com");
+const fullImageUrl = new URL(image, Astro.site || "https://agasthiyamahasivanaadijothidam.com").toString();
 ---
 
 <!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="description" content={description} />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <!-- Primary Meta Tags -->
+    <title>{title}</title>
+    <meta name="title" content={title} />
+    <meta name="description" content={description} />
+    <meta name="keywords" content={keywords} />
+    <meta name="author" content="Guruji M.A. Thillaimani" />
+    <link rel="canonical" href={canonicalURL} />
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={fullImageUrl} />
+    <meta property="og:site_name" content="Sree Agasthiya Maha Siva Nadi Astrology" />
+    <meta property="og:locale" content="en_IN" />
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content={canonicalURL} />
+    <meta property="twitter:title" content={title} />
+    <meta property="twitter:description" content={description} />
+    <meta property="twitter:image" content={fullImageUrl} />
+    
+    <!-- Structured Data / JSON-LD -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "LocalBusiness",
+        "name": "Sree Agasthiya Maha Siva Nadi Astrology",
+        "description": "Expert Nadi Astrology services with accurate palm leaf readings by Guruji M.A. Thillaimani",
+        "url": "https://agasthiyamahasivanaadijothidam.com",
+        "telephone": "+919500639334",
+        "email": "vkumar0127@gmail.com",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "Vaitheeswaran Koil",
+          "addressLocality": "Trichy",
+          "addressRegion": "Tamil Nadu",
+          "addressCountry": "IN"
+        },
+        "geo": {
+          "@type": "GeoCoordinates",
+          "latitude": "11.0784",
+          "longitude": "79.3784"
+        },
+        "image": "https://agasthiyamahasivanaadijothidam.com/assets/images/nadi/logo4.png",
+        "priceRange": "₹₹",
+        "openingHours": "Mo-Su 08:00-20:00",
+        "sameAs": [
+          "https://www.facebook.com/share/1Cujtc6h5C/",
+          "https://www.instagram.com/guruj_ma.thillaimani",
+          "https://www.youtube.com/@agasthiyamahasivanaadijodhidam"
+        ]
+      }
+    </script>
+    
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
-    <title>{title}</title>
   </head>
   <body class="bg-gray-50">
     <slot />
